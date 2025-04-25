@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: abc00000000004885411242402985702
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 250958
+  packageName: Concert Hall - Environment
+  packageVersion: 1.0
+  assetPath: Assets/Nimikko_ConcertHall/Materials/M_Basic.mat
+  uploadId: 573489
