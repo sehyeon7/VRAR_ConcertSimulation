@@ -15,7 +15,7 @@ public class LinkObjectTransform : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        gameObject.transform.position = obj.transform.position;
-        gameObject.transform.rotation = obj.transform.rotation;
+        gameObject.transform.localPosition = obj.transform.localPosition;
+        gameObject.transform.localRotation = obj.transform.localRotation;
     }
 }

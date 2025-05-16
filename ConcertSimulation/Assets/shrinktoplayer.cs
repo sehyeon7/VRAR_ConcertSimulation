@@ -4,6 +4,7 @@ public class shrinktoplayer : MonoBehaviour
 {
     public bool pressed = false;
     public GameObject player, rig;
+    public GameObject moveObject;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,8 +19,9 @@ public class shrinktoplayer : MonoBehaviour
             if (!pressed)
             {
                 pressed = true;
-                gameObject.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
-                gameObject.transform.position = player.transform.position;
+                //gameObject.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+                moveObject.transform.position = player.transform.position;
+                
             }
         }
 
