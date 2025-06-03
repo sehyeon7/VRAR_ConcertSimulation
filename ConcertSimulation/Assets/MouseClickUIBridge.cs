@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class MouseClickUIBridge : MonoBehaviour
 {
     public ModeSwitcher modeSwitcher;
+    public AudioManager audioManager;
     public Camera raycastCamera;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -37,6 +38,18 @@ public class MouseClickUIBridge : MonoBehaviour
                 else if (hit.collider.name.Contains("Director"))
                 {
                     modeSwitcher.SwitchToDirector();
+                }
+                else if (hit.collider.name.Contains("Acoustic"))
+                {
+                    audioManager.PlayMusic("Acoustic");
+                }
+                else if (hit.collider.name.Contains("Dance"))
+                {
+                    audioManager.PlayMusic("Dance");
+                }
+                else if (hit.collider.name.Contains("Classic"))
+                {
+                    audioManager.PlayMusic("Classic");
                 }
             }
             else

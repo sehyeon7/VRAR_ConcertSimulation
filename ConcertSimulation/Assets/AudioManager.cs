@@ -7,41 +7,45 @@ public class AudioManager : MonoBehaviour
     public AudioClip acousticClip;
     public AudioClip classicClip;
 
+    public float volume = -1.0f;
+
+    string type = "None";
+
     public void PlayMusic(string musicType)
     {
         switch (musicType)
         {
             case "Dance":
-                Debug.Log("▶️ Playing Dance music");
-                audioSource.clip = danceClip;
+                audioSource.resource = danceClip;
                 break;
             case "Acoustic":
-                Debug.Log("🎵 Playing Acoustic music");
-                audioSource.clip = acousticClip;
+                audioSource.resource = acousticClip;
                 break;
             case "Classic":
-                Debug.Log("🎶 Playing Classic music");
-                audioSource.clip = classicClip;
+                audioSource.resource = classicClip;
                 break;
             default:
                 Debug.LogWarning("Unknown music type: " + musicType);
                 return;
         }
-        Debug.Log($"Playing clip: {audioSource.clip.name}");
+        Debug.Log($"Playing clip: {audioSource.resource.name}");
         audioSource.Play();
     }
 
-    public void PlayDanceIfOn(bool isOn)
+    public void PlayDanceIfOn()
     {
-        if (isOn) PlayMusic("Dance");
+        type = "Dance";
+        PlayMusic("Dance");
     }
-    public void PlayAcousticIfOn(bool isOn)
+    public void PlayAcousticIfOn()
     {
-        if (isOn) PlayMusic("Acoustic");
+        Debug.Log("🎵 Playing Acoustic music");
+        PlayMusic("Acoustic");
     }
-    public void PlayClassicIfOn(bool isOn)
+    public void PlayClassicIfOn()
     {
-        if (isOn) PlayMusic("Classic");
+        Debug.Log("🎶 Playing Classic music");
+        PlayMusic("Classic");
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -53,6 +57,10 @@ public class AudioManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (volume >= 0.0f)
+        {
+            audioSource.volume = volume;
+            volume = -1.0f;
+        }
     }
 }
