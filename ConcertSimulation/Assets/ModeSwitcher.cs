@@ -5,9 +5,22 @@ public class ModeSwitcher : MonoBehaviour
     public GameObject menuAudience;
     public GameObject menuDirector;
     public GameObject duplicateMap;
+    public GameObject player;
 
     private bool isAudienceMode = true;
     private bool isVisible = true;  
+
+
+    public void EnableDuplicate()
+    {
+        duplicateMap.SetActive(true);
+        duplicateMap.transform.position = player.transform.position;
+    }
+
+    public void DisableDuplicate()
+    {
+        duplicateMap.SetActive(false);
+    }
 
     public void SwitchToAudience()
     {
@@ -17,7 +30,7 @@ public class ModeSwitcher : MonoBehaviour
             menuAudience.SetActive(true);
             menuDirector.SetActive(false);
         }
-        duplicateMap.SetActive(false);
+        DisableDuplicate();
     }
 
     public void SwitchToDirector()
@@ -29,7 +42,7 @@ public class ModeSwitcher : MonoBehaviour
             menuAudience.SetActive(false);
             menuDirector.SetActive(true);
         }
-        duplicateMap.SetActive(true);
+        EnableDuplicate();
     }
 
     public void SwitchToAudienceIfOn(bool isOn)
@@ -73,6 +86,15 @@ public class ModeSwitcher : MonoBehaviour
 
             // Duplicate Map은 Director 모드일 때만 반영
             duplicateMap.SetActive(isVisible && !isAudienceMode);
+        }
+
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            SwitchToDirector();
+        }
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            SwitchToAudience();
         }
     }
 }

@@ -9,7 +9,7 @@ public class LinkObjectTransform : MonoBehaviour
     void Start()
     {
         name = gameObject.name;
-        obj = GameObject.Find("/Duplicate_Map/" + name);
+        obj = GameObject.Find("/Duplicate_Map/Speakers/" + name);
     }
 
     // Update is called once per frame
