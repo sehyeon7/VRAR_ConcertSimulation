@@ -4,6 +4,7 @@ public class ModeSwitcher : MonoBehaviour
 {
     public GameObject menuAudience;
     public GameObject menuDirector;
+    public GameObject seat_UI;
     public GameObject duplicateMap;
     public GameObject player;
 
@@ -14,7 +15,10 @@ public class ModeSwitcher : MonoBehaviour
     public void EnableDuplicate()
     {
         duplicateMap.SetActive(true);
-        duplicateMap.transform.position = player.transform.position;
+        Transform position = player.transform;
+        Vector3 temp = new Vector3(0, 0, 400.0f);
+        position.position += temp;
+        duplicateMap.transform.position = position.position;
     }
 
     public void DisableDuplicate()
@@ -28,6 +32,7 @@ public class ModeSwitcher : MonoBehaviour
         if (isVisible)
         {
             menuAudience.SetActive(true);
+            seat_UI.SetActive(true);
             menuDirector.SetActive(false);
         }
         DisableDuplicate();
@@ -40,6 +45,7 @@ public class ModeSwitcher : MonoBehaviour
         if (isVisible)
         {
             menuAudience.SetActive(false);
+            seat_UI.SetActive(false);
             menuDirector.SetActive(true);
         }
         EnableDuplicate();
@@ -68,7 +74,7 @@ public class ModeSwitcher : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.U))
+        if (OVRInput.GetDown(OVRInput.Button.One))
         {
             isVisible = !isVisible;
 
@@ -76,11 +82,13 @@ public class ModeSwitcher : MonoBehaviour
             if (isAudienceMode)
             {
                 menuAudience.SetActive(isVisible);
+                seat_UI.SetActive(isVisible);
                 menuDirector.SetActive(false);
             }
             else
             {
                 menuAudience.SetActive(false);
+                seat_UI.SetActive(false);
                 menuDirector.SetActive(isVisible);
             }
 
