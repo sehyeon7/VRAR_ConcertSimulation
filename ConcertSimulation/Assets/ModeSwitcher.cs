@@ -15,10 +15,10 @@ public class ModeSwitcher : MonoBehaviour
     public void EnableDuplicate()
     {
         duplicateMap.SetActive(true);
-        Transform position = player.transform;
-        Vector3 temp = new Vector3(0, 0, 400.0f);
-        position.position += temp;
-        duplicateMap.transform.position = position.position;
+        Vector3 position = player.transform.position;
+        Vector3 temp = new Vector3(0, 1.4f, -0.4f); 
+        position += temp;
+        duplicateMap.transform.position = position;
     }
 
     public void DisableDuplicate()
@@ -74,7 +74,7 @@ public class ModeSwitcher : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (OVRInput.GetDown(OVRInput.Button.One))
+        if (OVRInput.GetDown(OVRInput.Button.Three))
         {
             isVisible = !isVisible;
 
@@ -93,16 +93,7 @@ public class ModeSwitcher : MonoBehaviour
             }
 
             // Duplicate Map은 Director 모드일 때만 반영
-            duplicateMap.SetActive(isVisible && !isAudienceMode);
-        }
-
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            SwitchToDirector();
-        }
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            SwitchToAudience();
+            duplicateMap.SetActive(!isAudienceMode);
         }
     }
 }
